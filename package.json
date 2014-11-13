@@ -1,0 +1,30 @@
+{
+  "name": "pd-project-assets",
+  "version": "0.0.1",
+  "description": "Opinionated gulpfile for assets",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mail@platdesign.de",
+  "license": "MIT",
+  "dependencies": {
+    "del": "^0.1.3",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-browserify": "^0.5.0",
+    "gulp-ignore": "^1.2.1",
+    "gulp-imagemin": "^1.2.1",
+    "gulp-jade": "^0.9.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-livereload": "^2.1.1",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-notify": "^2.0.1",
+    "gulp-plumber": "^0.6.6",
+    "gulp-sass": "^1.1.0",
+    "gulp-sequence": "^0.3.0",
+    "gulp-uglify": "^1.0.1",
+    "imagemin-pngcrush": "^4.0.0",
+    "jshint-stylish": "^1.0.0"
+  }
+}

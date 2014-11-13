@@ -1,0 +1,7 @@
+{
+  "name": "pd-project-assets",
+  "version": "0.0.1",
+  "description":"Opinionated gulpfile for assets",
+  "dependencies": {}
+}
+
