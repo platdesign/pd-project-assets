@@ -81,15 +81,13 @@ var destPath 	= path.join(rootPath, 'build');
 	var autoprefixer 	= require('gulp-autoprefixer');
 	var minifyCSS 		= require('gulp-minify-css');
 	var livereload 		= require('gulp-livereload');
-	var plumber			= require('gulp-plumber');
 
 	gulp.task('css-dev', function() {
 		var src = path.join(srcPath, 'scss', '**', '*.scss');
 		var dest = path.join(destPath, 'css');
 
 		return gulp.src(src)
-			.pipe( plumber() )
-			.pipe( sass() )
+			.pipe( sass({errLogToConsole: true}) )
 			.pipe( autoprefixer('last 3 versions', '> 1%', 'ie 8') )
 			.pipe( gulp.dest(dest) )
 		;
@@ -101,7 +99,6 @@ var destPath 	= path.join(rootPath, 'build');
 		var dest = path.join(destPath, 'css');
 
 		return gulp.src(src)
-			.pipe( plumber() )
 			.pipe( minifyCSS() )
 			.pipe( gulp.dest(dest) )
 		;
