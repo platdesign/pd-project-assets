@@ -61,7 +61,7 @@ var destPath 	= path.join(rootPath, 'build');
 		var dest = path.join(destPath, 'js');
 
 		return gulp.src( src )
-			.pipe(uglify())
+			.pipe( uglify() )
 			.pipe( gulp.dest( dest ))
 		;
 	});
@@ -82,15 +82,23 @@ var destPath 	= path.join(rootPath, 'build');
 	var minifyCSS 		= require('gulp-minify-css');
 	var livereload 		= require('gulp-livereload');
 
+	var livereloadEnabled = false;
+
 	gulp.task('css-dev', function() {
 		var src = path.join(srcPath, 'scss', '**', '*.scss');
 		var dest = path.join(destPath, 'css');
 
-		return gulp.src(src)
+		var res = gulp.src(src)
 			.pipe( sass({errLogToConsole: true}) )
 			.pipe( autoprefixer('last 3 versions', '> 1%', 'ie 8') )
 			.pipe( gulp.dest(dest) )
 		;
+
+		if(livereloadEnabled) {
+			res.pipe( livereload() );
+		}
+
+		return res;
 	});
 
 	gulp.task('css-build', ['css-dev'], function() {
@@ -105,8 +113,9 @@ var destPath 	= path.join(rootPath, 'build');
 	});
 
 	gulp.task('css-watch', ['css-dev'], function() {
-		livereload.listen();
-		return gulp.watch(path.join(srcPath, 'scss', '**', '*.scss'), ['css-dev']).on('change', livereload.changed);
+		livereloadEnabled = true;
+		return gulp.watch(path.join(srcPath, 'scss', '**', '*.scss'), ['css-dev']);
+
 	});
 
 
